@@ -1,0 +1,677 @@
+{
+  "title": "Reator 2",
+  "image": "tb-image:c3VtcC5wbmc=:c3VtcC5wbmc=;data:image/png;base64,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",
+  "mobileHide": false,
+  "mobileOrder": 2,
+  "configuration": {
+    "description": "",
+    "widgets": {
+      "5f5d8dd7-0f3b-a0c2-2837-1dc63d974756": {
+        "typeFullFqn": "system.charts.basic_timeseries",
+        "type": "timeseries",
+        "sizeX": 8,
+        "sizeY": 5,
+        "config": {
+          "datasources": [
+            {
+              "type": "device",
+              "name": "",
+              "deviceId": "5d297770-fb78-11ee-a580-c9767f02edb7",
+              "dataKeys": [
+                {
+                  "name": "pH",
+                  "type": "timeseries",
+                  "label": "pH",
+                  "color": "#DCC54A",
+                  "settings": {},
+                  "_hash": 0.423995996726392,
+                  "aggregationType": null,
+                  "units": "",
+                  "decimals": 2,
+                  "funcBody": null,
+                  "usePostProcessing": null,
+                  "postFuncBody": null
+                }
+              ],
+              "alarmFilterConfig": {
+                "statusList": [
+                  "ACTIVE"
+                ]
+              },
+              "latestDataKeys": []
+            }
+          ],
+          "timewindow": {
+            "hideInterval": false,
+            "hideLastInterval": false,
+            "hideQuickInterval": false,
+            "hideAggregation": false,
+            "hideAggInterval": false,
+            "hideTimezone": false,
+            "selectedTab": 0,
+            "realtime": {
+              "realtimeType": 0,
+              "timewindowMs": 1000,
+              "quickInterval": "CURRENT_DAY",
+              "interval": 1000
+            },
+            "aggregation": {
+              "type": "AVG",
+              "limit": 2500
+            }
+          },
+          "showTitle": true,
+          "backgroundColor": "#fff",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "8px",
+          "settings": {
+            "stack": false,
+            "enableSelection": false,
+            "fontSize": 10,
+            "fontColor": "#545454",
+            "showTooltip": true,
+            "tooltipIndividual": false,
+            "tooltipCumulative": false,
+            "hideZeros": false,
+            "tooltipValueFormatter": "",
+            "grid": {
+              "verticalLines": true,
+              "horizontalLines": true,
+              "outlineWidth": 2,
+              "color": "#13A757",
+              "backgroundColor": null,
+              "tickColor": "#13A757"
+            },
+            "xaxis": {
+              "title": null,
+              "showLabels": true,
+              "color": "#009665"
+            },
+            "yaxis": {
+              "min": 0,
+              "max": 14,
+              "title": null,
+              "showLabels": true,
+              "color": "#009665",
+              "tickSize": 0,
+              "tickDecimals": 2,
+              "ticksFormatter": ""
+            },
+            "shadowSize": 4,
+            "smoothLines": true,
+            "thresholdsLineWidth": null,
+            "comparisonEnabled": false,
+            "showLegend": true,
+            "legendConfig": {
+              "position": "bottom",
+              "sortDataKeys": true,
+              "direction": "column",
+              "showMin": true,
+              "showMax": true,
+              "showAvg": true,
+              "showTotal": false,
+              "showLatest": true
+            },
+            "customLegendEnabled": false
+          },
+          "title": "pH do Efluente",
+          "dropShadow": true,
+          "enableFullscreen": true,
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "configMode": "advanced",
+          "actions": {},
+          "showTitleIcon": true,
+          "titleIcon": "mdi:ph",
+          "iconColor": "#66B648",
+          "useDashboardTimewindow": true,
+          "displayTimewindow": true,
+          "titleFont": {
+            "size": 16,
+            "sizeUnit": "px",
+            "family": "Roboto",
+            "weight": "500",
+            "style": "normal",
+            "lineHeight": "24px"
+          },
+          "titleColor": "#008571",
+          "enableDataExport": true,
+          "titleTooltip": "",
+          "widgetStyle": {},
+          "widgetCss": "",
+          "pageSize": 1024,
+          "decimals": 2,
+          "noDataDisplayMessage": "",
+          "iconSize": "24px",
+          "units": ""
+        },
+        "row": 0,
+        "col": 0,
+        "id": "5f5d8dd7-0f3b-a0c2-2837-1dc63d974756"
+      },
+      "4744a53e-f918-ced7-f264-d69fbbe37f5b": {
+        "typeFullFqn": "system.charts.basic_timeseries",
+        "type": "timeseries",
+        "sizeX": 8,
+        "sizeY": 5,
+        "config": {
+          "datasources": [
+            {
+              "type": "device",
+              "name": "",
+              "deviceId": "5d297770-fb78-11ee-a580-c9767f02edb7",
+              "dataKeys": [
+                {
+                  "name": "Temp",
+                  "type": "timeseries",
+                  "label": "Temperatura",
+                  "color": "#9EC33B",
+                  "settings": {},
+                  "_hash": 0.423995996726392,
+                  "aggregationType": null,
+                  "units": "°C",
+                  "decimals": 1,
+                  "funcBody": null,
+                  "usePostProcessing": null,
+                  "postFuncBody": null
+                }
+              ],
+              "alarmFilterConfig": {
+                "statusList": [
+                  "ACTIVE"
+                ]
+              },
+              "latestDataKeys": []
+            }
+          ],
+          "timewindow": {
+            "hideInterval": false,
+            "hideLastInterval": false,
+            "hideQuickInterval": false,
+            "hideAggregation": false,
+            "hideAggInterval": false,
+            "hideTimezone": false,
+            "selectedTab": 0,
+            "realtime": {
+              "realtimeType": 0,
+              "timewindowMs": 1000,
+              "quickInterval": "CURRENT_DAY",
+              "interval": 1000
+            },
+            "aggregation": {
+              "type": "AVG",
+              "limit": 2500
+            }
+          },
+          "showTitle": true,
+          "backgroundColor": "#fff",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "8px",
+          "settings": {
+            "stack": false,
+            "enableSelection": false,
+            "fontSize": 10,
+            "fontColor": "#545454",
+            "showTooltip": true,
+            "tooltipIndividual": false,
+            "tooltipCumulative": false,
+            "hideZeros": false,
+            "tooltipValueFormatter": "",
+            "grid": {
+              "verticalLines": true,
+              "horizontalLines": true,
+              "outlineWidth": 2,
+              "color": "#13A757",
+              "backgroundColor": null,
+              "tickColor": "#13A757"
+            },
+            "xaxis": {
+              "title": null,
+              "showLabels": true,
+              "color": "#009665"
+            },
+            "yaxis": {
+              "min": 0,
+              "max": 100,
+              "title": null,
+              "showLabels": true,
+              "color": "#009665",
+              "tickSize": 0,
+              "tickDecimals": 1,
+              "ticksFormatter": ""
+            },
+            "shadowSize": 4,
+            "smoothLines": true,
+            "thresholdsLineWidth": null,
+            "comparisonEnabled": false,
+            "showLegend": true,
+            "legendConfig": {
+              "direction": "column",
+              "position": "bottom",
+              "sortDataKeys": true,
+              "showMin": true,
+              "showMax": true,
+              "showAvg": true,
+              "showTotal": false,
+              "showLatest": true
+            },
+            "customLegendEnabled": false
+          },
+          "title": "Temperatura do Efluente",
+          "dropShadow": true,
+          "enableFullscreen": true,
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "configMode": "advanced",
+          "actions": {},
+          "showTitleIcon": true,
+          "titleIcon": "mdi:thermometer-water",
+          "iconColor": "#66B648",
+          "useDashboardTimewindow": true,
+          "displayTimewindow": true,
+          "titleFont": {
+            "size": 16,
+            "sizeUnit": "px",
+            "family": "Roboto",
+            "weight": "500",
+            "style": "normal",
+            "lineHeight": "24px"
+          },
+          "titleColor": "#008571",
+          "enableDataExport": true,
+          "titleTooltip": "",
+          "widgetStyle": {},
+          "widgetCss": "",
+          "pageSize": 1024,
+          "decimals": 1,
+          "noDataDisplayMessage": "",
+          "iconSize": "24px",
+          "units": "°C"
+        },
+        "row": 0,
+        "col": 0,
+        "id": "4744a53e-f918-ced7-f264-d69fbbe37f5b"
+      },
+      "214f91b4-f4bc-6bf7-09fb-120f8aaac5b9": {
+        "typeFullFqn": "system.charts.basic_timeseries",
+        "type": "timeseries",
+        "sizeX": 8,
+        "sizeY": 5,
+        "config": {
+          "datasources": [
+            {
+              "type": "device",
+              "name": "",
+              "deviceId": "5d297770-fb78-11ee-a580-c9767f02edb7",
+              "dataKeys": [
+                {
+                  "name": "Condutivity",
+                  "type": "timeseries",
+                  "label": "Condutividade",
+                  "color": "#FFC66D",
+                  "settings": {},
+                  "_hash": 0.423995996726392,
+                  "aggregationType": null,
+                  "units": "µS/cm",
+                  "decimals": 6,
+                  "funcBody": null,
+                  "usePostProcessing": null,
+                  "postFuncBody": null
+                }
+              ],
+              "alarmFilterConfig": {
+                "statusList": [
+                  "ACTIVE"
+                ]
+              },
+              "latestDataKeys": []
+            }
+          ],
+          "timewindow": {
+            "hideInterval": false,
+            "hideLastInterval": false,
+            "hideQuickInterval": false,
+            "hideAggregation": false,
+            "hideAggInterval": false,
+            "hideTimezone": false,
+            "selectedTab": 0,
+            "realtime": {
+              "realtimeType": 0,
+              "timewindowMs": 1000,
+              "quickInterval": "CURRENT_DAY",
+              "interval": 1000
+            },
+            "aggregation": {
+              "type": "AVG",
+              "limit": 2500
+            }
+          },
+          "showTitle": true,
+          "backgroundColor": "#fff",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "8px",
+          "settings": {
+            "stack": false,
+            "enableSelection": false,
+            "fontSize": 10,
+            "fontColor": "#545454",
+            "showTooltip": true,
+            "tooltipIndividual": false,
+            "tooltipCumulative": false,
+            "hideZeros": false,
+            "tooltipValueFormatter": "",
+            "grid": {
+              "verticalLines": true,
+              "horizontalLines": true,
+              "outlineWidth": 2,
+              "color": "#13A757",
+              "backgroundColor": null,
+              "tickColor": "#13A757"
+            },
+            "xaxis": {
+              "title": null,
+              "showLabels": true,
+              "color": "#009665"
+            },
+            "yaxis": {
+              "min": 0,
+              "max": 2000,
+              "title": null,
+              "showLabels": true,
+              "color": "#009665",
+              "tickSize": 0,
+              "tickDecimals": 2,
+              "ticksFormatter": ""
+            },
+            "shadowSize": 4,
+            "smoothLines": true,
+            "thresholdsLineWidth": null,
+            "comparisonEnabled": false,
+            "showLegend": true,
+            "legendConfig": {
+              "direction": "column",
+              "position": "bottom",
+              "sortDataKeys": true,
+              "showMin": true,
+              "showMax": true,
+              "showAvg": true,
+              "showTotal": false,
+              "showLatest": true
+            },
+            "customLegendEnabled": false
+          },
+          "title": "Condutividade do Efluente",
+          "dropShadow": true,
+          "enableFullscreen": true,
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "configMode": "advanced",
+          "actions": {},
+          "showTitleIcon": true,
+          "titleIcon": "bolt",
+          "iconColor": "#66B648",
+          "useDashboardTimewindow": true,
+          "displayTimewindow": true,
+          "titleFont": {
+            "size": 16,
+            "sizeUnit": "px",
+            "family": "Roboto",
+            "weight": "500",
+            "style": "normal",
+            "lineHeight": "24px"
+          },
+          "titleColor": "#008571",
+          "enableDataExport": true,
+          "titleTooltip": "",
+          "widgetStyle": {},
+          "widgetCss": "",
+          "pageSize": 1024,
+          "decimals": 2,
+          "noDataDisplayMessage": "",
+          "iconSize": "24px",
+          "units": ""
+        },
+        "row": 0,
+        "col": 0,
+        "id": "214f91b4-f4bc-6bf7-09fb-120f8aaac5b9"
+      },
+      "1587e2e3-5787-0343-f64d-077df0f2b957": {
+        "typeFullFqn": "system.charts.basic_timeseries",
+        "type": "timeseries",
+        "sizeX": 8,
+        "sizeY": 5,
+        "config": {
+          "datasources": [
+            {
+              "type": "device",
+              "name": "",
+              "deviceId": "5d297770-fb78-11ee-a580-c9767f02edb7",
+              "dataKeys": [
+                {
+                  "name": "NTU",
+                  "type": "timeseries",
+                  "label": "Turbidez",
+                  "color": "#FFCA99",
+                  "settings": {},
+                  "_hash": 0.423995996726392,
+                  "aggregationType": null,
+                  "units": "NTU",
+                  "decimals": 2,
+                  "funcBody": null,
+                  "usePostProcessing": null,
+                  "postFuncBody": null
+                }
+              ],
+              "alarmFilterConfig": {
+                "statusList": [
+                  "ACTIVE"
+                ]
+              },
+              "latestDataKeys": []
+            }
+          ],
+          "timewindow": {
+            "hideInterval": false,
+            "hideLastInterval": false,
+            "hideQuickInterval": false,
+            "hideAggregation": false,
+            "hideAggInterval": false,
+            "hideTimezone": false,
+            "selectedTab": 0,
+            "realtime": {
+              "realtimeType": 0,
+              "timewindowMs": 1000,
+              "quickInterval": "CURRENT_DAY",
+              "interval": 1000
+            },
+            "aggregation": {
+              "type": "AVG",
+              "limit": 2500
+            }
+          },
+          "showTitle": true,
+          "backgroundColor": "#fff",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "8px",
+          "settings": {
+            "stack": false,
+            "enableSelection": false,
+            "fontSize": 10,
+            "fontColor": "#545454",
+            "showTooltip": true,
+            "tooltipIndividual": false,
+            "tooltipCumulative": false,
+            "hideZeros": false,
+            "tooltipValueFormatter": "",
+            "grid": {
+              "verticalLines": true,
+              "horizontalLines": true,
+              "outlineWidth": 2,
+              "color": "#13A757",
+              "backgroundColor": null,
+              "tickColor": "#13A757"
+            },
+            "xaxis": {
+              "title": null,
+              "showLabels": true,
+              "color": "#009665"
+            },
+            "yaxis": {
+              "min": 0,
+              "max": 1000,
+              "title": null,
+              "showLabels": true,
+              "color": "#009665",
+              "tickSize": 0,
+              "tickDecimals": 2,
+              "ticksFormatter": ""
+            },
+            "shadowSize": 4,
+            "smoothLines": true,
+            "thresholdsLineWidth": null,
+            "comparisonEnabled": false,
+            "showLegend": true,
+            "legendConfig": {
+              "direction": "column",
+              "position": "bottom",
+              "sortDataKeys": true,
+              "showMin": true,
+              "showMax": true,
+              "showAvg": true,
+              "showTotal": false,
+              "showLatest": true
+            },
+            "customLegendEnabled": false
+          },
+          "title": "Turbidez do Efluente",
+          "dropShadow": true,
+          "enableFullscreen": true,
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "configMode": "advanced",
+          "actions": {},
+          "showTitleIcon": true,
+          "titleIcon": "mdi:water-opacity",
+          "iconColor": "#66B648",
+          "useDashboardTimewindow": true,
+          "displayTimewindow": true,
+          "titleFont": {
+            "size": 16,
+            "sizeUnit": "px",
+            "family": "Roboto",
+            "weight": "500",
+            "style": "normal",
+            "lineHeight": "24px"
+          },
+          "titleColor": "#008571",
+          "enableDataExport": true,
+          "titleTooltip": "",
+          "widgetStyle": {},
+          "widgetCss": "",
+          "pageSize": 1024,
+          "decimals": 2,
+          "noDataDisplayMessage": "",
+          "iconSize": "24px",
+          "units": "NTU"
+        },
+        "row": 0,
+        "col": 0,
+        "id": "1587e2e3-5787-0343-f64d-077df0f2b957"
+      }
+    },
+    "states": {
+      "default": {
+        "name": "Eflux",
+        "root": true,
+        "layouts": {
+          "main": {
+            "widgets": {
+              "5f5d8dd7-0f3b-a0c2-2837-1dc63d974756": {
+                "sizeX": 12,
+                "sizeY": 8,
+                "row": 0,
+                "col": 12
+              },
+              "4744a53e-f918-ced7-f264-d69fbbe37f5b": {
+                "sizeX": 12,
+                "sizeY": 8,
+                "row": 0,
+                "col": 0
+              },
+              "214f91b4-f4bc-6bf7-09fb-120f8aaac5b9": {
+                "sizeX": 12,
+                "sizeY": 8,
+                "row": 8,
+                "col": 0
+              },
+              "1587e2e3-5787-0343-f64d-077df0f2b957": {
+                "sizeX": 12,
+                "sizeY": 8,
+                "row": 8,
+                "col": 12
+              }
+            },
+            "gridSettings": {
+              "backgroundColor": "#eeeeee",
+              "columns": 24,
+              "margin": 10,
+              "outerMargin": true,
+              "backgroundSizeMode": "100%",
+              "autoFillHeight": false,
+              "backgroundImageUrl": null,
+              "mobileAutoFillHeight": false,
+              "mobileRowHeight": 70
+            }
+          }
+        }
+      }
+    },
+    "entityAliases": {},
+    "filters": {},
+    "timewindow": {
+      "hideInterval": false,
+      "hideLastInterval": false,
+      "hideQuickInterval": false,
+      "hideAggregation": false,
+      "hideAggInterval": false,
+      "hideTimezone": false,
+      "selectedTab": 0,
+      "realtime": {
+        "realtimeType": 0,
+        "timewindowMs": 18000000,
+        "quickInterval": "CURRENT_DAY",
+        "interval": 60000
+      },
+      "aggregation": {
+        "type": "AVG",
+        "limit": 2500
+      },
+      "timezone": null
+    },
+    "settings": {
+      "stateControllerId": "entity",
+      "showTitle": true,
+      "showDashboardsSelect": true,
+      "showEntitiesSelect": true,
+      "showDashboardTimewindow": true,
+      "showDashboardExport": true,
+      "toolbarAlwaysOpen": true,
+      "titleColor": "#007279",
+      "showDashboardLogo": false,
+      "dashboardLogoUrl": null,
+      "hideToolbar": false,
+      "showFilters": true,
+      "showUpdateDashboardImage": true,
+      "dashboardCss": ""
+    }
+  },
+  "name": "Reator 2"
+}
