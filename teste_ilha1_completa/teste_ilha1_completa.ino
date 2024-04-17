@@ -56,7 +56,7 @@ void loop(void)
 
   adc0 = ads.readADC_SingleEnded(0);
   adc1 = ads.readADC_SingleEnded(1);
-  adc2= ads.readADC_SingleEnded(1);
+  adc2= ads.readADC_SingleEnded(2);
   
   volts0 = ads.computeVolts(adc0);
   volts1 = ads.computeVolts(adc1);
