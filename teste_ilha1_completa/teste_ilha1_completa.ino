@@ -84,13 +84,13 @@ void loop(void)
   float somatemp = 0;
   
  // Média móvel da temperatura
-  for(int i=0;i<10;i++){
+  for(int i=0;i<100;i++){
   float temp = sensors.getTempC(insideThermometer);
   
   somatemp = somatemp + temp;
   delay(2);
   }
-  float valortemp = somatemp/10;
+  float valortemp = somatemp/100;
   
   float tempCalibration = 0.02*(valortemp - 25);
 
@@ -99,20 +99,20 @@ void loop(void)
   float somaph = 0;
   
  // Média móvel do pH
-  for(int i=0;i<10;i++){
+  for(int i=0;i<100;i++){
   float ph = declive * volts0 + calibration;
   
   somaph = somaph + ph;
   delay(2);
   }
-  float valorph = somaph/10;
+  float valorph = somaph/100;
   
 
  // Condutividade
   float somacond = 0;
 
  // Média móvel da condutividade 
-  for(int i=0;i<10;i++){
+  for(int i=0;i<100;i++){
   float parcela1 = 2.53*volts1*volts1*volts1;
   float parcela2 = -5.16*volts1*volts1;
   float parcela3 = 3.18*volts1;
@@ -123,13 +123,13 @@ void loop(void)
   somacond = somacond + ecCalibrated;
   delay(2);
   }
-  float valorcond = somacond/10;
+  float valorcond = somacond/100;
   
  // Turbidez
   float somaturb = 0;
 
  // Média móvel da turbidez
-  for(int i=0;i<10;i++){  
+  for(int i=0;i<100;i++){  
   float primeiro_fator = -1002.57*volts2*volts2*volts2;
   float segundo_fator = 3798.64*volts2*volts2;
   float terceiro_fator = -5217.97*volts2;
@@ -139,7 +139,7 @@ void loop(void)
   somaturb = somaturb + ntu;
   delay(2);
   }
-  float valorturb = somaturb/10;
+  float valorturb = somaturb/100;
 
 // ========================================================================================================
  
