@@ -1,16 +1,32 @@
 #include <Adafruit_ADS1X15.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
+#include <ThingsBoard.h>
+#include <Arduino_MQTT_Client.h>
+#include <WiFi.h>
 
 // ========================================================================================================
 // --- Constantes Auxiliares ---
 #define ONE_WIRE_BUS 13
+
+#define WIFI_AP "fontes"
+#define WIFI_PASS "fontes123"
+
+#define TB_SERVER "demo.thingsboard.io"
+#define TOKEN "O6AdSUAbcmf1cLD7MkAC"
 
 // ========================================================================================================
 // --- Declaração de Objetos ---
 OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensors(&oneWire);
 DeviceAddress insideThermometer = { 0x28, 0xB7, 0x5B, 0x80, 0xE3, 0xE1, 0x3C, 0x2F };
+
+constexpr uint32_t MAX_MESSAGE_SIZE = 1024U;
+
+WiFiClient espClient;
+
+Arduino_MQTT_Client mqttClient(espClient);
+ThingsBoard tb(mqttClient, MAX_MESSAGE_SIZE);
 
 Adafruit_ADS1115 ads;     /* Use this for the 12-bit version */
 float tdsValue = 0;
@@ -48,7 +64,20 @@ void setup(void)
 }
 
 void loop(void)
-{
+{  if (WiFi.status() != WL_CONNECTED) {
+    initWiFi();
+  }
+
+  if(!tb.connected()){
+    Serial.println("Conectando ao servidor...");
+    if(!tb.connect(TB_SERVER, TOKEN)){
+      Serial.println("Não foi possivel conectar");
+      return;
+    }
+  } else {
+    Serial.println("Conectado ao Servidor!");
+  }
+  
  // Recebimento dos dados em formato de tensão
 
   int16_t adc0, adc1, adc2;
@@ -129,17 +158,20 @@ void loop(void)
   float somaturb = 0;
 
  // Média móvel da turbidez
-  for(int i=0;i<100;i++){  
-  float primeiro_fator = -1002.57*volts2*volts2*volts2;
-  float segundo_fator = 3798.64*volts2*volts2;
-  float terceiro_fator = -5217.97*volts2;
-  float quarto_fator = 2999.99;
-  float ntu = primeiro_fator + segundo_fator + terceiro_fator + quarto_fator;
+  for (int i = 0; i < 1000; i++) {
+    float primeiro_fator = -1473.6 * volts0;
+    float segundo_fator = 2709.648;
 
-  somaturb = somaturb + ntu;
-  delay(2);
+    float ntu = primeiro_fator + segundo_fator;
+
+    somaturb = somaturb + ntu;
+    delay(2);
   }
-  float valorturb = somaturb/100;
+  float valorturb = somaturb / 1000;
+
+  if (volts0 > 1.83) {
+    valorturb = 0;
+  };
 
 // ========================================================================================================
  
@@ -148,16 +180,34 @@ void loop(void)
 
   Serial.print("\nTemperatura:");
   Serial.println(valortemp);
+  tb.sendTelemetryData("Temp", valortemp);
   
   Serial.print ("\npH: ");
   Serial.println(valorph);
+  tb.sendTelemetryData("pH", valorph;
 
   Serial.print("\nCondutividade em uS/cm: ");
   Serial.println(valorcond);
+  tb.sendTelemetryData("Condutivity", valorcond);
 
   Serial.print("\nTurbidez em NTU: ");
   Serial.println(valorturb);
-  
+  tb.sendTelemetryData("NTU", valorturb);
+
+
+  Serial.println("Enviando dados...");
   delay(1000);
 
+  tb.loop();
+}
+
+void initWiFi() {
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(WIFI_AP, WIFI_PASS);
+  Serial.print("Connecting to WiFi ..");
+  while (WiFi.status() != WL_CONNECTED) {
+    Serial.print('.');
+    delay(1000);
+  }
+  Serial.println(WiFi.localIP());
 }
