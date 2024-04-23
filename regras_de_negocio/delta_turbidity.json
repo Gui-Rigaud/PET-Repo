@@ -1,0 +1,216 @@
+{
+  "ruleChain": {
+    "name": "Delta Turbidity",
+    "type": "CORE",
+    "firstRuleNodeId": null,
+    "root": false,
+    "debugMode": false,
+    "configuration": null,
+    "additionalInfo": {
+      "description": ""
+    }
+  },
+  "metadata": {
+    "firstNodeIndex": 3,
+    "nodes": [
+      {
+        "type": "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode",
+        "name": "Save Timeseries",
+        "debugMode": true,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "additionalInfo": {
+          "layoutX": 170,
+          "layoutY": 432
+        },
+        "configuration": {
+          "defaultTTL": 0
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+        "name": "Turbidity delta",
+        "debugMode": false,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "additionalInfo": {
+          "description": null,
+          "layoutX": 779,
+          "layoutY": 432
+        },
+        "configuration": {
+          "scriptLang": "JS",
+          "jsScript": "var newMsg = {};\n\nnewMsg.deltaTurbidity = parseFloat(Math.abs(((metadata.ntu1 - metadata.ntu3) / metadata.ntu1) * 100).toFixed(2));\n\nreturn {\n\tmsg: newMsg,\n\tmetadata: metadata,\n\tmsgType: msgType\n};",
+          "tbelScript": null
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.transform.TbChangeOriginatorNode",
+        "name": "To Asset",
+        "debugMode": false,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "additionalInfo": {
+          "description": null,
+          "layoutX": 807,
+          "layoutY": 141
+        },
+        "configuration": {
+          "originatorSource": "RELATED",
+          "relationsQuery": {
+            "direction": "TO",
+            "maxLevel": 1,
+            "filters": [
+              {
+                "relationType": "Contains",
+                "entityTypes": [
+                  "ASSET"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.filter.TbJsSwitchNode",
+        "name": "Switch By Type",
+        "debugMode": false,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "additionalInfo": {
+          "description": null,
+          "layoutX": 315,
+          "layoutY": 151
+        },
+        "configuration": {
+          "scriptLang": "JS",
+          "jsScript": "function nextRelation(metadata, msg){\n\tif(metadata.deviceType === 'Reator 1'){\n\t\treturn ['Reator 1'];\n\t}else if(metadata.deviceType === 'Reator 3')\n\t\treturn ['Reator 3'];\n}\n\nreturn nextRelation(metadata, msg);",
+          "tbelScript": null
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+        "name": "Change to Reator 1",
+        "debugMode": false,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "additionalInfo": {
+          "description": null,
+          "layoutX": 552,
+          "layoutY": 203
+        },
+        "configuration": {
+          "scriptLang": "JS",
+          "jsScript": "var newMsg = {};\n\nnewMsg.ntu1 = msg.NTU;\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};",
+          "tbelScript": null
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+        "name": "Change to Reator 3",
+        "debugMode": false,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "additionalInfo": {
+          "description": null,
+          "layoutX": 550,
+          "layoutY": 79
+        },
+        "configuration": {
+          "scriptLang": "JS",
+          "jsScript": "var newMsg = {};\n\nnewMsg.ntu3 = msg.NTU;\n\nreturn {msg: newMsg, metadata: metadata, msgType: msgType};",
+          "tbelScript": null
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.metadata.TbGetAttributesNode",
+        "name": "Fetch latest Timeseries",
+        "debugMode": false,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 1,
+        "additionalInfo": {
+          "description": null,
+          "layoutX": 469,
+          "layoutY": 432
+        },
+        "configuration": {
+          "tellFailureIfAbsent": false,
+          "fetchTo": "METADATA",
+          "clientAttributeNames": [],
+          "sharedAttributeNames": [],
+          "serverAttributeNames": [],
+          "latestTsKeyNames": [
+            "ntu1",
+            "ntu3"
+          ],
+          "getLatestValueWithTs": false
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode",
+        "name": "Save Timeseries",
+        "debugMode": true,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "additionalInfo": {
+          "layoutX": 1077,
+          "layoutY": 431
+        },
+        "configuration": {
+          "defaultTTL": 0
+        }
+      }
+    ],
+    "connections": [
+      {
+        "fromIndex": 0,
+        "toIndex": 6,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 1,
+        "toIndex": 7,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 2,
+        "toIndex": 0,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 3,
+        "toIndex": 4,
+        "type": "Reator 1"
+      },
+      {
+        "fromIndex": 3,
+        "toIndex": 5,
+        "type": "Reator 3"
+      },
+      {
+        "fromIndex": 4,
+        "toIndex": 2,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 5,
+        "toIndex": 2,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 6,
+        "toIndex": 1,
+        "type": "Success"
+      }
+    ],
+    "ruleChainConnections": null
+  }
+}

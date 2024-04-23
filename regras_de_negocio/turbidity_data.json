@@ -1,0 +1,91 @@
+{
+  "ruleChain": {
+    "name": "Turbidity Data",
+    "type": "CORE",
+    "firstRuleNodeId": null,
+    "root": false,
+    "debugMode": false,
+    "configuration": null,
+    "additionalInfo": {
+      "description": ""
+    }
+  },
+  "metadata": {
+    "firstNodeIndex": null,
+    "nodes": [
+      {
+        "type": "org.thingsboard.rule.engine.debug.TbMsgGeneratorNode",
+        "name": "Turbidity 1",
+        "debugMode": false,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 1,
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 301,
+          "layoutY": 98
+        },
+        "configuration": {
+          "msgCount": 0,
+          "periodInSeconds": 10,
+          "scriptLang": "JS",
+          "jsScript": "var msg;\nreturn {\n             \tmsg: msg,\n             \tmetadata: {\n             \t\tdeviceType: \"Reator 1\"\n             \t},\n             \tmsgType: \"POST_TELEMETRY_REQUEST\"\n             };",
+          "tbelScript": "var msg = { temp: 42, humidity: 77 };\nvar metadata = { data: 40 };\nvar msgType = \"POST_TELEMETRY_REQUEST\";\n\nreturn { msg: msg, metadata: metadata, msgType: msgType };",
+          "originatorId": "ebaf21e0-fb76-11ee-a580-c9767f02edb7",
+          "originatorType": "DEVICE"
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.debug.TbMsgGeneratorNode",
+        "name": "Turbidity 3",
+        "debugMode": false,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 1,
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 300,
+          "layoutY": 202
+        },
+        "configuration": {
+          "msgCount": 0,
+          "periodInSeconds": 60,
+          "scriptLang": "JS",
+          "jsScript": "var msg;\n\n             return {\n             \tmsg: msg,\n             \tmetadata: {\n             \t\tdeviceType: \"Reator 3\"\n             \t},\n             \tmsgType: \"POST_TELEMETRY_REQUEST\"\n             };",
+          "tbelScript": "var msg = { temp: 42, humidity: 77 };\nvar metadata = { data: 40 };\nvar msgType = \"POST_TELEMETRY_REQUEST\";\n\nreturn { msg: msg, metadata: metadata, msgType: msgType };",
+          "originatorId": "7329f180-fb78-11ee-a580-c9767f02edb7",
+          "originatorType": "DEVICE"
+        }
+      },
+      {
+        "type": "org.thingsboard.rule.engine.flow.TbRuleChainInputNode",
+        "name": "Root Rule Chain",
+        "debugMode": false,
+        "singletonMode": false,
+        "queueName": null,
+        "configurationVersion": 0,
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 557,
+          "layoutY": 150
+        },
+        "configuration": {
+          "ruleChainId": "40ac80a0-00f1-11ef-8538-f5123e845f0d"
+        }
+      }
+    ],
+    "connections": [
+      {
+        "fromIndex": 0,
+        "toIndex": 2,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 1,
+        "toIndex": 2,
+        "type": "Success"
+      }
+    ],
+    "ruleChainConnections": null
+  }
+}
