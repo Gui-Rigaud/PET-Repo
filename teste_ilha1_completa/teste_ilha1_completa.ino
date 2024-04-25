@@ -184,7 +184,7 @@ void loop(void)
   
   Serial.print ("\npH: ");
   Serial.println(valorph);
-  tb.sendTelemetryData("pH", valorph;
+  tb.sendTelemetryData("pH", valorph);
 
   Serial.print("\nCondutividade em uS/cm: ");
   Serial.println(valorcond);
