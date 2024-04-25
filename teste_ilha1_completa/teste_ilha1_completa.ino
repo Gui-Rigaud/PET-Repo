@@ -100,10 +100,10 @@ void loop(void)
   Serial.print(volts0);
   Serial.println(" V");
   Serial.print("\nTensão de entrada do TDS: ");
-  Serial.println(volts1);
+  Serial.println(volts2);
   Serial.println(" V");
   Serial.print("\nTensão de entrada do Turbidímetro: ");
-  Serial.println(volts2);
+  Serial.println(volts1);
   Serial.println(" V");
   
  // Declaração das fórmulas
@@ -142,9 +142,9 @@ void loop(void)
 
  // Média móvel da condutividade 
   for(int i=0;i<100;i++){
-  float parcela1 = 2.53*volts1*volts1*volts1;
-  float parcela2 = -5.16*volts1*volts1;
-  float parcela3 = 3.18*volts1;
+  float parcela1 = 2.53*volts2*volts2*volts2;
+  float parcela2 = -5.16*volts2*volts2;
+  float parcela3 = 3.18*volts2;
   float parcela4 = -0.12;
   float ecValue = parcela1 + parcela2 + parcela3 + parcela4;
   float ecCalibrated = ecValue*(1.0 + tempCalibration);
@@ -159,7 +159,7 @@ void loop(void)
 
  // Média móvel da turbidez
   for (int i = 0; i < 1000; i++) {
-    float primeiro_fator = -1473.6 * volts0;
+    float primeiro_fator = -1473.6 * volts1;
     float segundo_fator = 2709.648;
 
     float ntu = primeiro_fator + segundo_fator;
@@ -172,6 +172,10 @@ void loop(void)
   if (volts0 > 1.83) {
     valorturb = 0;
   };
+
+  if (volts2 < 0.30) {
+    valorcond = 0;
+  }
 
 // ========================================================================================================
  
